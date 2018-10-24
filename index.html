@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.1.0.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <link href="style/bootstrap-combined.min.css" rel="stylesheet">
+    <title>registro de mascotas</title>
+
+</head>
+<body ng-app="AppGestor"   >
+    <div ng-controller="Mascota"  >
+
+        <form novalidate class="simple-form">
+
+            <div style=" padding-left:30px;"  >
+                <br />
+                <h3>Gestor de Mascota</h3>
+
+                <!-- a,b adicion y edicion de registro -->
+                <label>Id: <input type="text" ng-model="mascota.id" readonly /></label><br />
+                <label>Nombre: <input type="text" ng-model="mascota.nombre" /></label><br />
+                <label>Fecha Nac: <input type="text" ng-model="mascota.fechaNac" /></label><br />
+                <label>
+                    Especie: <select name="especieSelect" ng-model="mascota.especie">
+                        <option value="perro">perro</option>
+                        <option value="gato">gato</option>
+                        <option value="otra especie">otra especie</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    Raza: <input type="text" ng-model="mascota.raza" />
+                </label><br />
+                <label>
+                    Vacuna:
+                    <select name="vacunaSelect" ng-model="mascota.vacuna">
+                        <option value="vacuna 1">vacuna 1</option>
+                        <option value="vacuna 2">vacuna 2</option>
+                        <option value="vacuna 3">vacuna 3</option>
+                        <option value="vacuna 4">vacuna 4</option>
+                        <option value="vacuna 5">vacuna 5</option>
+                    </select>
+                </label><br />
+
+                <button class="btn btn-primary" ng-click="limpiar()">Nuevo</button>
+                <button class="btn btn-primary" ng-click="registrar(mascota)">Registrar</button>
+                <span>{{mensaje}}</span>
+                <br />
+
+                <!-- c. mostrar el registro -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Fecha Nac.</th>
+                            <th>Especie</th>
+                            <th>Raza</th>
+                            <th>Vacuna</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.fechaNac}}</td>
+                            <td>{{item.especie}}</td>
+                            <td>{{item.raza}}</td>
+                            <td>{{item.vacuna}}</td>
+                            <td><button class="btn btn-primary" ng-click="editar(item)">Editar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
